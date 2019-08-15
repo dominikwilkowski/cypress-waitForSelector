@@ -1,34 +1,33 @@
-Cypress-waitfor
-===============
+waitfor
+=======
 
 > A zero-dependency plugin for [Cypress](https://www.cypress.io/) to wait for an element.
 
-## Contents
-
-* [Usage](#usage)
-* [Options](#options)
-* [Install](#install)
-* [Release History](#release-history-app)
-* [License](#license)
+You sometimes have to wait for an animation, data loading or whatever before we can find an element on the page.
+This plugin allows you to wait for an element using Cypress own select engine and Promise ecosystem.
 
 ## Usage
 
 ```js
 describe('Test suite', () => {
-  it('A test description', function() {
+  it('A test description', () => {
     cy.visit('http://localhost:3000');
     // The page does an animation or loading
-    // so we now need to wait for that
+    // so we now need to wait for an element
+    // with the id `main-body`
     cy.waitFor('#main-body');
-    // Here we now have instant access to the #main-body element
+    // Now we have instant access to the #main-body element
     cy.get('#main-body').should('contain', 'Data loaded');
   });
 });
 ```
 
+The function `waitFor` takes a selector string that will just be passed down to `Cypress.$`.
+So you can use any valid [jQuery selector](https://api.jquery.com/jQuery/).
+
 ## Options
 
-You can an options object to `waitFor`.
+The plugin also takes an optional options object:
 
 ```js
 cy.waitFor('#main-body', {
