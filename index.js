@@ -1,6 +1,16 @@
-const waitFor = ( element, options = {} ) => {
-	if( !typeof element === 'string' ) {
-		throw new Error(`The first parameter should be a function but was: ${ typeof element }`);
+/**
+ * Wait for a thing by polling for it
+ *
+ * @param  {(string|function)} item                  - A jQuery selector string or a function that returns a boolean
+ * @param  {object}            [options]             - An options object
+ * @param  {number}            [options.timeout=200] - The time between tries in milliseconds
+ * @param  {number}            [options.tries=300]   - The amount of times to try before failing
+ *
+ * @return {Promise}                                 - A Cypress promise, more at https://docs.cypress.io/api/utilities/promise.html
+ */
+const waitFor = ( item, options = {} ) => {
+	if( typeof item !== 'string' && !(item instanceof Function) ) {
+		throw new Error('Cypress plugin waitFor: The first parameter should be a string or a function');
 	}
 
 	const defaultSettings = {
@@ -9,14 +19,19 @@ const waitFor = ( element, options = {} ) => {
 	};
 	const SETTINGS = { ...defaultSettings, ...options };
 
-	const check = element => {
-		return Cypress.$( element ).length > 0;
+	const check = item => {
+		if( typeof item === 'string' ) {
+			return Cypress.$( item ).length > 0;
+		}
+		else {
+			return item();
+		}
 	}
 
 	return new Cypress.Promise( ( resolve, reject ) => {
 		let index = 0;
 		const interval = setInterval( () => {
-			if( check( element ) ) {
+			if( check( item ) ) {
 				clearInterval( interval );
 				resolve();
 			}

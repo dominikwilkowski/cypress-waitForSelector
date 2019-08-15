@@ -1,7 +1,7 @@
 {
 	"name": "cypress-waitfor",
 	"description": "A zero-dependency Cypress plugin to wait for an element to exist on page",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"homepage": "https://github.com/dominikwilkowski/cypress-waitfor",
 	"author": {
 		"name": "Dominik Wilkowski",

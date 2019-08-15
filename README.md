@@ -22,8 +22,26 @@ describe('Test suite', () => {
 });
 ```
 
-The function `waitFor` takes a selector string that will just be passed down to `Cypress.$`.
-So you can use any valid [jQuery selector](https://api.jquery.com/jQuery/).
+The function `waitFor` takes either:
+- a selector string that will just be passed down to `Cypress.$`. 
+	So you can use any valid [jQuery selector](https://api.jquery.com/jQuery/).
+- a function that returns a boolean
+
+```js
+describe('Test suite', () => {
+  it('A test description', () => {
+    cy.visit('http://localhost:3000');
+    // The page does an animation or loading
+    // so we now need to wait for localStorage
+    // to populate
+    cy.waitFor(() => {
+      const localData = localStorage.getItem('myData');
+      return localData !== null;
+    });
+    // Now we know from now on our localStorage is available
+  });
+});
+```
 
 ## Options
 
@@ -49,6 +67,7 @@ import 'cypress-waitfor';
 
 ## Release History
 
+* 1.1.0 - Added support for functions as first argument
 * 1.0.0 - First working version
 
 ## License
