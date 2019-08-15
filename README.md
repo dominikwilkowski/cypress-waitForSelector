@@ -1,4 +1,4 @@
-waitfor
+waitFor
 =======
 
 > A zero-dependency plugin for [Cypress](https://www.cypress.io/) to wait for an element.
