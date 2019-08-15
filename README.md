@@ -15,14 +15,14 @@ Cypress-waitfor
 
 ```js
 describe('Test suite', () => {
-	it('A test description', function() {
-		cy.visit('http://localhost:3000');
-		// The page does an animation or loading
-		// so we now need to wait for that
-		cy.waitFor('#main-body');
-		// Here we now have instant access to the #main-body element
-		cy.get('#main-body').should('contain', 'Data loaded');
-	});
+  it('A test description', function() {
+    cy.visit('http://localhost:3000');
+    // The page does an animation or loading
+    // so we now need to wait for that
+    cy.waitFor('#main-body');
+    // Here we now have instant access to the #main-body element
+    cy.get('#main-body').should('contain', 'Data loaded');
+  });
 });
 ```
 
@@ -32,8 +32,8 @@ You can an options object to `waitFor`.
 
 ```js
 cy.waitFor('#main-body', {
-	timeout: 200, // The time in ms to poll for changes
-	tries: 300,   // How many times to try before failing
+  timeout: 200, // The time in ms to poll for changes
+  tries: 300,   // How many times to try before failing
                 // 300 tries at 200ms timeout = 1min
 });
 ```
