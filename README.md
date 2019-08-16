@@ -5,6 +5,10 @@ waitFor
 
 You sometimes have to wait for an animation, data loading or whatever before we can find an element on the page.
 This plugin allows you to wait for an element using Cypress own select engine and Promise ecosystem.
+Cypress comes with a [`get` method](https://docs.cypress.io/api/commands/get.html#Arguments) which will wait for a timeout before failing which works most of
+the time as long as you use that method.
+If you need to use the [jQuery selector](https://docs.cypress.io/api/utilities/$.html) or non-cypress methods you need to wait manually.
+This is where this plugin comes in.
 
 ## Usage
 
@@ -17,7 +21,7 @@ describe('Test suite', () => {
     // with the id `main-body`
     cy.waitFor('#main-body');
     // Now we have instant access to the #main-body element
-    cy.get('#main-body').should('contain', 'Data loaded');
+    const body = Cypress.$('#main-body title').attr('data-body');
   });
 });
 ```
