@@ -61,12 +61,12 @@ cy.waitForSelector('#main-body', {
 
 ## Install
 
-Install the plugin via `yarn add cypress-waitfor` (or `npm i cypress-waitfor`) and add it to your plugins.
+Install the plugin via `yarn add cypress-waitforselector` (or `npm i cypress-waitforselector`) and add it to your plugins.
 
 Inside `cypress/support/commands.js` add:
 
 ```js
-import 'cypress-waitfor';
+import 'cypress-waitforselector';
 ```
 
 ## Release History
@@ -78,7 +78,7 @@ import 'cypress-waitfor';
 ## License
 
 Copyright (c) Dominik Wilkowski.
-Licensed under [GNU-GPLv3](https://raw.githubusercontent.com/https://github.com/dominikwilkowski/cypress-waitfor/master/LICENSE).
+Licensed under [GNU-GPLv3](https://raw.githubusercontent.com/https://github.com/dominikwilkowski/cypress-waitforselector/master/LICENSE).
 
 **[⬆ back to top](#contents)**
 
