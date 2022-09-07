@@ -8,9 +8,9 @@
  *
  * @return {Promise}                                 - A Cypress promise, more at https://docs.cypress.io/api/utilities/promise.html
  */
-const waitFor = ( item, options = {} ) => {
+const waitForSelector = ( item, options = {} ) => {
 	if( typeof item !== 'string' && !(item instanceof Function) ) {
-		throw new Error('Cypress plugin waitFor: The first parameter should be a string or a function');
+		throw new Error('Cypress plugin waitForSelector: The first parameter should be a string or a function');
 	}
 
 	const defaultSettings = {
@@ -43,4 +43,4 @@ const waitFor = ( item, options = {} ) => {
 	});
 }
 
-Cypress.Commands.add( 'waitFor', waitFor );
+Cypress.Commands.add( 'waitForSelector', waitForSelector );

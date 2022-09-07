@@ -1,4 +1,4 @@
-waitFor
+waitForSelector
 =======
 
 > A zero-dependency plugin for [Cypress](https://www.cypress.io/) to wait for an element.
@@ -19,14 +19,14 @@ describe('Test suite', () => {
     // The page does an animation or loading
     // so we now need to wait for an element
     // with the id `main-body`
-    cy.waitFor('#main-body');
+    cy.waitForSelector('#main-body');
     // Now we have instant access to the #main-body element
     const body = Cypress.$('#main-body title').attr('data-body');
   });
 });
 ```
 
-The function `waitFor` takes either:
+The function `waitForSelector` takes either:
 - a selector string that will just be passed down to `Cypress.$`. 
 	So you can use any valid [jQuery selector](https://api.jquery.com/jQuery/).
 - a function that returns a boolean
@@ -38,7 +38,7 @@ describe('Test suite', () => {
     // The page does an animation or loading
     // so we now need to wait for localStorage
     // to populate
-    cy.waitFor(() => {
+    cy.waitForSelector(() => {
       const localData = localStorage.getItem('myData');
       return localData !== null;
     });
@@ -52,7 +52,7 @@ describe('Test suite', () => {
 The plugin also takes an optional options object:
 
 ```js
-cy.waitFor('#main-body', {
+cy.waitForSelector('#main-body', {
   timeout: 200, // The time in ms to poll for changes
   tries: 300,   // How many times to try before failing
                 // 300 tries at 200ms timeout = 1min
@@ -71,6 +71,7 @@ import 'cypress-waitfor';
 
 ## Release History
 
+* 1.2.0 - Renamed package
 * 1.1.0 - Added support for functions as first argument
 * 1.0.0 - First working version
 
